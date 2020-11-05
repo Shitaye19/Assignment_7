@@ -178,7 +178,7 @@ noticeably slower than the vectorization approach. With more complicated
 operations, vectorization can often shorten the runtime of a for loop
 from days to minutes.
 
-\#\#\#**Exercise 2: Data inputting and wrangling in batch**
+### **Exercise 2: Data inputting and wrangling in batch**
 
 Another instance where loops are useful is data input/output in batch.
 We’ve learned how to make plots and output them in batch in class, so in
@@ -186,3 +186,24 @@ this exercise, you will use for loops to automate the inputting and
 wrangling process of a group of datasets with similar names and formats
 in the
 <https://github.com/nt246/NTRES6940-data-science/tree/master/datasets/buoydata>.
+
+**2.1 Given the following code chunk for reading buoy data files from
+buoy 44013 for each year, describe the following:**
+
+  - What parts of your code are consistent across every line/code chunk?
+
+  - What parts are different?
+
+<!-- end list -->
+
+``` r
+buoy_1987 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1987.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1988 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1988.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1989 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1989.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1990 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1990.csv', na = c("99", "999", "99.00", "999.0"))
+```
+
+Answer: all the four codes read comma separated values (csv) files, the
+path/directory is the same, the character values to replace na are the
+same for all data files. The codes differ in the file name extended by
+the year only (44013\_"")

@@ -174,7 +174,7 @@ mass
 
 Although the for loop in this excercise can be run quickly, it is noticeably slower than the vectorization approach. With more complicated operations, vectorization can often shorten the runtime of a for loop from days to minutes. 
 
-###**Exercise 2: Data inputting and wrangling in batch**
+### **Exercise 2: Data inputting and wrangling in batch**
 
 Another instance where loops are useful is data input/output in batch. We've learned how to make plots and output them in batch in class, so in this exercise, you will use for loops to automate the inputting and wrangling process of a group of datasets with similar names and formats in the https://github.com/nt246/NTRES6940-data-science/tree/master/datasets/buoydata.
 
@@ -198,6 +198,8 @@ buoy_1990 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-sc
 
 ```
 
+Answer: all the four codes read comma separated values (csv) files, the path/directory is the same, the character values to replace na are the same for all data files.
+The codes differ in the file name extended by the year only (44013_"")
 
 
 
