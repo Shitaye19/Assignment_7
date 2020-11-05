@@ -109,7 +109,7 @@ c(1, 2, 3) * c(4, 5, 6)
 
 
 ```{r, eval = FALSE}
-mass <-  vector(length = length(dinosaur_lengths))
+mass <-  NULL
 
 for (i in 1:length(dinosaur_lengths)){
   mass[i] <- a_values[i]*dinosaur_lengths[i]^b_values[i]
@@ -156,21 +156,47 @@ system.time(a_values*dinosaur_lengths^b_values)
 
 ```{r, eval = FALSE, echo=FALSE}
 
-mass <-  vector(length = length(dinosaur_lengths))
+mass <-  NULL
 
 system.time(for (i in 1:length(dinosaur_lengths)){
   mass[i] <- a_values[i]*dinosaur_lengths[i]^b_values[i]
-  
 })
 mass
+
 ```
 
 
 ```{r}
-##user  system elapsed 
-## 0.005   0.000   0.004 
+## user  system elapsed 
+## 0.004   0.000   0.004 
 ```
 
+
+Although the for loop in this excercise can be run quickly, it is noticeably slower than the vectorization approach. With more complicated operations, vectorization can often shorten the runtime of a for loop from days to minutes. 
+
+###**Exercise 2: Data inputting and wrangling in batch**
+
+Another instance where loops are useful is data input/output in batch. We've learned how to make plots and output them in batch in class, so in this exercise, you will use for loops to automate the inputting and wrangling process of a group of datasets with similar names and formats in the https://github.com/nt246/NTRES6940-data-science/tree/master/datasets/buoydata.
+
+
+**2.1 Given the following code chunk for reading buoy data files from buoy 44013 for each year, describe the following:**
+
+* What parts of your code are consistent across every line/code chunk?
+
+* What parts are different?
+
+
+```{r, message = FALSE}
+
+buoy_1987 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1987.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1988 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1988.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1989 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1989.csv', na = c("99", "999", "99.00", "999.0"))
+buoy_1990 <- read_csv('https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1990.csv', na = c("99", "999", "99.00", "999.0"))
+
+
+
+
+```
 
 
 

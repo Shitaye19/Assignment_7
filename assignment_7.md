@@ -126,7 +126,7 @@ c(1, 2, 3) * c(4, 5, 6)
 ```
 
 ``` r
-mass <-  vector(length = length(dinosaur_lengths))
+mass <-  NULL
 
 for (i in 1:length(dinosaur_lengths)){
   mass[i] <- a_values[i]*dinosaur_lengths[i]^b_values[i]
@@ -169,6 +169,20 @@ question.
 <!-- end list -->
 
 ``` r
-##user  system elapsed 
-## 0.005   0.000   0.004 
+## user  system elapsed 
+## 0.004   0.000   0.004 
 ```
+
+Although the for loop in this excercise can be run quickly, it is
+noticeably slower than the vectorization approach. With more complicated
+operations, vectorization can often shorten the runtime of a for loop
+from days to minutes.
+
+\#\#\#**Exercise 2: Data inputting and wrangling in batch**
+
+Another instance where loops are useful is data input/output in batch.
+We’ve learned how to make plots and output them in batch in class, so in
+this exercise, you will use for loops to automate the inputting and
+wrangling process of a group of datasets with similar names and formats
+in the
+<https://github.com/nt246/NTRES6940-data-science/tree/master/datasets/buoydata>.
