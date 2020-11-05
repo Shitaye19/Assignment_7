@@ -207,3 +207,31 @@ Answer: all the four codes read comma separated values (csv) files, the
 path/directory is the same, the character values to replace na are the
 same for all data files. The codes differ in the file name extended by
 the year only (44013\_"")
+
+**2.2 Complete the skeleton of the for loop below, which uses the
+`str_c()` function to print out the path to the buoy 44013 data file
+from year `start` to `end`**
+
+``` r
+start <-1987
+
+end <- 1992
+
+for (year in start:end){
+  
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/", "buoydata/", "44013_", year, 
+                ".csv")
+  
+  print(path)
+  
+}
+```
+
+``` r
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1987.csv"
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1988.csv"
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1989.csv"
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1990.csv"
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1991.csv"
+##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1992.csv"
+```
