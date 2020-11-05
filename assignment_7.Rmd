@@ -213,8 +213,7 @@ end <- 1992
 
 for (year in start:end){
   
-  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/", "buoydata/", "44013_", year, 
-                ".csv")
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/", "buoydata/", "44013_", year, ".csv")
   
   print(path)
   
@@ -222,6 +221,9 @@ for (year in start:end){
 
 
 ```
+
+
+
 
 
 ```{r}
@@ -235,6 +237,58 @@ for (year in start:end){
 
 
 ```
+
+
+**2.3 Complete the skeleton of the for loop below, which reads the buoy 4444013 data from year `start` to `end` and combine them together**
+
+
+```{r}
+
+start <-  1987
+
+end <-  1992 
+
+for (year in start:end){
+  
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/",
+                "buoydata/", "44013_", year, ".csv")
+  
+  df<- read_csv(path)
+  
+  if(year == start){
+    
+    df_combined <- 
+      
+  } else {
+    
+    df_combined <- 
+      
+  }
+}
+```
+
+
+
+**2.4 Building on the workflow that you used in 2.1 - 2.3, use a for loop to read in clean up, and summarize the buoy data from all years from 1987 to 1992 using a dplyr workflow.**
+
+
+**Select** only columns `YY`(year), `MM` (month), `WVHT` (wave heights), `WTMP` (temperatures) and **rename** these columns to something understandable. **Summarize** monthly averaged wave heights and temperatures throughout the years in a tibble, and **plot the variation of these monthly averaged values through time** as shown below.
+
+There are multiple ways to do this, and for this execercise, you may well combine all the raw data in a for loop and clean it up after the loop. In the next (**Optional**) excercise however, you will need to clean up the data in the loop before you can combine them. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
