@@ -1,0 +1,36 @@
+---
+title: "Assignment 7: Iteration (for loops) and functions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### **Instructions: please read through this before you begin**
+
+* This homework is due by **10pm on Monday 11/09/20.**
+
+* Please **reproduce this markdown template.** Pay attention to all the formatting in this file, including bullet points, bolded characters, inserted code chuncks, headings, text colors, blank lines, and etc.
+
+* When a verbal response is needed, answer by editing the part in the R markdown template where it says "Write your response here".
+
+* Have all your code embedded within the R markdown file, and show both your code and plots in the knitted markdown file.
+
+* Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion:messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+
+* Please name your R markdown file `assignment_7.Rmd` and the knitted markdown file `assignment_7.md`. Please upload both files using your personal GitHub repository for this class.
+
+
+**Acknowledgments:** Excercise 1 has been adapted (with permission) from the **[Data Carpentry for Biologists semester course](https://datacarpentry.org/semester-biology/exercises/Functions-use-and-modify-Python/)** and exercises 2 and 3 are adapted (with permission) from lain Carmichael's course **[STOR 390:Introduction Data Science](https://idc9.github.io/stor390/#course_material).**
+
+
+
+
+
+
+
+
+
+
+
