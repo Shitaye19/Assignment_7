@@ -134,7 +134,42 @@ mass
 
 
 
+**1.3**
 
+The function `system.time()` can be used to record the runtime of an operation. For example, `system.time(rnorm(100000))` can give you the time to draw 100000 samples from a normal distribution. Here, use `system.time()` to record the runtime of the vectorization approach and the for loop approach and the for loop approach in the previous question.
+
+
+* vectorization: 
+
+```{r, eval=FALSE, echo=FALSE}
+system.time(a_values*dinosaur_lengths^b_values)
+```
+
+```{r}
+ ##  user  system elapsed 
+ ##  0       0       0 
+```
+
+
+
+* for loop:
+
+```{r, eval = FALSE, echo=FALSE}
+
+mass <-  vector(length = length(dinosaur_lengths))
+
+system.time(for (i in 1:length(dinosaur_lengths)){
+  mass[i] <- a_values[i]*dinosaur_lengths[i]^b_values[i]
+  
+})
+mass
+```
+
+
+```{r}
+##user  system elapsed 
+## 0.005   0.000   0.004 
+```
 
 
 

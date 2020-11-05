@@ -145,3 +145,30 @@ mass
 ##[28]  51630.571  29253.772  36399.306 117511.962  33384.288  58581.226   5462.316  28637.745  15864.172
 ##[37]   9284.810   1218.755  98522.609  19534.524
 ```
+
+**1.3**
+
+The function `system.time()` can be used to record the runtime of an
+operation. For example, `system.time(rnorm(100000))` can give you the
+time to draw 100000 samples from a normal distribution. Here, use
+`system.time()` to record the runtime of the vectorization approach and
+the for loop approach and the for loop approach in the previous
+question.
+
+  - vectorization:
+
+<!-- end list -->
+
+``` r
+ ##  user  system elapsed 
+ ##  0       0       0 
+```
+
+  - for loop:
+
+<!-- end list -->
+
+``` r
+##user  system elapsed 
+## 0.005   0.000   0.004 
+```
