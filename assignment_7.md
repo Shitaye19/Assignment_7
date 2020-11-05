@@ -25,9 +25,40 @@ Assignment 7: Iteration (for loops) and functions
     markdown file `assignment_7.md`. Please upload both files using your
     personal GitHub repository for this class.
 
-**Acknowledgments:** Excercise 1 has been adapted (with permission) from
+**Acknowledgments:** Exercise 1 has been adapted (with permission) from
 the **[Data Carpentry for Biologists semester
 course](https://datacarpentry.org/semester-biology/exercises/Functions-use-and-modify-Python/)**
 and exercises 2 and 3 are adapted (with permission) from lain
 Carmichael’s course **[STOR 390:Introduction Data
 Science](https://idc9.github.io/stor390/#course_material).**
+
+To start, first load all the required packages with the following code.
+Install them if they are not installed yet.
+
+``` r
+library(tidyverse)
+```
+
+### **Exercise 1: Body mass estimation using vectorization vs. for loop**
+
+There are two major types of approaches to perform multiple operations
+in
+R:**[vectorization](https://swcarpentry.github.io/r-novice-gapminder/09-vectorization/)**
+and for loops. As a simple to calculate the sum of two vectors, `x` and
+`y`, the syntax for vectorization is simply `z <- x + y`. With this, the
+computer will be able to perform the same operation to each element of x
+and y vector **simultaneously.**
+
+The for loop approach to achieve the same task (create a new vector z
+that is the sum of vectors x and y), on the other hand, takes the
+following form:
+
+``` r
+z[i] <- NULL
+
+for (i in 1:length(x)){
+  
+  z[i] <- x[i] +y[i]
+  
+  }
+```
