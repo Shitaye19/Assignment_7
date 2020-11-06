@@ -242,7 +242,7 @@ for (year in start:end){
 **2.3 Complete the skeleton of the for loop below, which reads the buoy 4444013 data from year `start` to `end` and combine them together**
 
 
-```{r}
+```{r, message = F}
 
 start <-  1987
 
@@ -253,18 +253,21 @@ for (year in start:end){
   path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/",
                 "buoydata/", "44013_", year, ".csv")
   
-  df<- read_csv(path)
+  df<- read_csv(path, na = c("99", "999", "99.00", "999.0"))
   
   if(year == start){
     
-    df_combined <- 
+    df_combined <- df
       
   } else {
     
-    df_combined <- 
+    df_combined <- bind_rows(df, df_combined)
       
   }
 }
+
+dim(df_combined)
+
 ```
 
 
@@ -277,6 +280,32 @@ for (year in start:end){
 There are multiple ways to do this, and for this execercise, you may well combine all the raw data in a for loop and clean it up after the loop. In the next (**Optional**) excercise however, you will need to clean up the data in the loop before you can combine them. 
 
 
+```{r}
+
+start <-  1987
+
+end <-  1992 
+
+for (year in start:end){
+  
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/",
+                "buoydata/", "44013_", year, ".csv")
+  
+  df<- read_csv(path, na = c("99", "999", "99.00", "999.0"))
+  
+  if(year == start){
+    
+    df_combined <- df
+      
+  } else {
+    
+    df_combined <- bind_rows(df, df_combined)
+      
+  }
+}
+
+
+```
 
 
 
