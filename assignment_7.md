@@ -219,8 +219,7 @@ end <- 1992
 
 for (year in start:end){
   
-  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/", "buoydata/", "44013_", year, 
-                ".csv")
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/", "buoydata/", "44013_", year, ".csv")
   
   print(path)
   
@@ -235,3 +234,169 @@ for (year in start:end){
 ##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1991.csv"
 ##[1] "https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/buoydata/44013_1992.csv"
 ```
+
+**2.3 Complete the skeleton of the for loop below, which reads the buoy
+4444013 data from year `start` to `end` and combine them together**
+
+``` r
+start <-  1987
+
+end <-  1992 
+
+for (year in start:end){
+  
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/",
+                "buoydata/", "44013_", year, ".csv")
+  
+  df<- read_csv(path, na = c("99", "999", "99.00", "999.0"))
+  
+  if(year == start){
+    
+    df_combined <- df
+      
+  } else {
+    
+    df_combined <- bind_rows(df, df_combined)
+      
+  }
+}
+
+dim(df_combined)
+```
+
+    ## [1] 49775    16
+
+**2.4 Building on the workflow that you used in 2.1 - 2.3, use a for
+loop to read in clean up, and summarize the buoy data from all years
+from 1987 to 1992 using a dplyr workflow.**
+
+**Select** only columns `YY`(year), `MM` (month), `WVHT` (wave heights),
+`WTMP` (temperatures) and **rename** these columns to something
+understandable. **Summarize** monthly averaged wave heights and
+temperatures throughout the years in a tibble, and **plot the variation
+of these monthly averaged values through time** as shown below.
+
+There are multiple ways to do this, and for this execercise, you may
+well combine all the raw data in a for loop and clean it up after the
+loop. In the next (**Optional**) excercise however, you will need to
+clean up the data in the loop before you can combine them.
+
+``` r
+start <-  1987
+
+end <-  1992 
+
+for (year in start:end){
+  
+  path <- str_c("https://", "raw.githubusercontent.com/","nt246/", "NTRES6940-data-science/","master/", "datasets/",
+                "buoydata/", "44013_", year, ".csv")
+  
+  df<- read_csv(path, na = c("99", "999", "99.00", "999.0"))
+  
+  if(year == start){
+    
+    df_combined <- df
+      
+  } else {
+    
+    df_combined <- bind_rows(df, df_combined)
+      
+  }
+}
+
+df_combined1<-df_combined %>% 
+  
+  select("YY", "MM", "WVHT", "WTMP") %>% 
+  
+  rename(year = YY, month = MM, wave_ht = WVHT, temp =WTMP) %>%  
+  
+  group_by(month, year) %>% 
+  
+  summarize(temperature_c_mean = mean(temp,na.rm = T), 
+            
+            wave_height_mean = mean(wave_ht, na.rm = T)) %>% 
+  
+  mutate(year_month = paste(year,month, sep = "_"), 
+         
+         year_month = parse_date(year_month,"%y_%m"))
+
+  
+  ggplot(df_combined1, aes(x = year_month, y = temperature_c_mean)) +
+  
+  labs(title =  "Monthly average temperature from 1987 to 1992", hjust = 0) +
+  
+  geom_point()+
+  
+  geom_line() 
+```
+
+![](assignment_7_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+
+``` r
+ggplot(data =df_combined1, aes(x = year_month, y = wave_height_mean)) +
+  
+  geom_point()+
+  
+  geom_line() +
+  
+labs(title =  "Monthly wave height from 1987 to 1992", hjust = 0)+
+
+ geom_point()+
+  
+  geom_line() 
+```
+
+![](assignment_7_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->
+
+**2.5 (Optional) Now, further generalize your loop so that it works for
+an year between 1987 and 2013. Here are a few things that you should pay
+attention to:**
+
+  - The first three column have consistently contained information on
+    year, month, and date (and in that order), but they have had
+    different names throughout the years.
+
+  - The first column (year) followed a two-digit format from 1987 to
+    1998, but has (understandably) switched to a four-digit format since
+    1999.
+
+\*Starting from 2007, a second row appears after the header to show the
+unit for each column, and it needs to be filtered out.
+
+**Hints:**
+
+  - use conditional excution to deal with the inconsistencis above
+
+  - don’t worry about parsing failures in columns other than the ones
+    that you will use for this excercise
+
+  - there is a lot of missing data during the mid 90s, resulting in a
+    gap in the time series. The wave height data, however, appears to be
+    continues.
+
+\#\#**Exercise 3: Writing a custom function**
+
+**3.1 Write a function that can convert Farenheit to Celsius**, based on
+the following formula `C =(F - 32) * 5/9`
+
+Take your function for a spin does it return the correct values?
+
+32 F = 0 C
+
+50 F = 10 C
+
+212 F = 100 C
+
+**3.2** A student came from ‘tropical Canada’. She doesn’t like the cold
+but she really didn’t like it when it’s hot. Although she wanted to know
+what the temperature in Celsius when the US weather channel reported it
+in Farenheit, there are certain points at which it was just too cold or
+too hot for her to care about the exact value. **Modify the f\_to\_c
+function below to print the following**, and check if your function
+works properly using the input of**-10 F, 60 F, and 90 F.**
+
+  - If the temperature is less than -20 C, print “Don’t bother going
+    out” instead of the temperature in Celcius
+
+  - If the temperature is greater than 30 C, print “I’m moving back to
+    Canada” instead of temperature in Celcius
