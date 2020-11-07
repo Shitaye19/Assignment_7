@@ -329,7 +329,50 @@ df_combined %>%
 
 
 
+**2.5 (Optional) Now, further generalize your loop so that it works for an year between 1987 and 2013. Here are a few things that you should pay attention to:**
 
+* The first three column have consistently contained information on year, month, and date (and in that order), but they have had different names throughout the years.
+
+* The first column (year) followed a two-digit format from 1987 to 1998, but has (understandably) switched to a four-digit format since 1999.
+
+
+*Starting from 2007, a second row appears after the header to show the unit for each column, and it needs to be filtered out.
+
+
+**Hints:**
+
+* use conditional excution to deal with the inconsistencis above
+
+* don't worry about parsing failures in columns other than the ones that you will use for this excercise
+
+* there is a lot of missing data during the mid 90s, resulting in a gap in the time series. The wave height data, however, appears to be continues.
+
+
+```{r}
+
+```
+
+
+
+##**Exercise 3: Writing a custom function**
+
+**3.1 Write a function that can convert Farenheit to Celsius**, based on the following formula `C =(F - 32) * 5/9` 
+
+Take your function for a spin does it return the correct values?
+
+32 F = 0 C
+
+50 F = 10 C
+
+212 F = 100 C
+
+
+
+**3.2** A student came from 'tropical Canada'. She doesn't like the cold but she really didn't like it when it's hot. Although she wanted to know what the temperature in Celsius when the US weather channel reported it in Farenheit, there are certain points at which it was just too cold or too hot for her to care about the exact value.  **Modify the f_to_c function below to print the following**, and check if your function works properly using the input of**-10 F, 60 F, and 90 F.**
+
+* If the temperature is less than -20 C, print "Don't bother going out" instead of the temperature in Celcius
+
+* If the temperature is greater than 30 C, print "I'm moving back to Canada" instead of temperature in Celcius
 
 
 
