@@ -400,3 +400,52 @@ works properly using the input of**-10 F, 60 F, and 90 F.**
 
   - If the temperature is greater than 30 C, print “I’m moving back to
     Canada” instead of temperature in Celcius
+
+<!-- end list -->
+
+``` r
+f_to_c<- function(FA){
+  
+  CL =(FA -32)*5/9
+
+}
+
+ #check<- f_to_c(c(32,50,212))
+# check
+
+
+far_to_cel<-f_to_c(c(-10,60,90))
+
+far_to_cel
+```
+
+    ## [1] -23.33333  15.55556  32.22222
+
+``` r
+##for (i in far_to_cel)
+  
+ ## if(far_to_cel[i] < -20){
+    
+    print("Don't bother going out")
+```
+
+    ## [1] "Don't bother going out"
+
+``` r
+  ##} else if ( far_to_cel[i] > 30) {
+    
+    print("I'm moving back to Canada")
+```
+
+    ## [1] "I'm moving back to Canada"
+
+``` r
+  ##} else {
+    
+   ## return(far_to_cel[i])
+    
+    
+##  }
+
+#I tried many options but, it eithir prints three of the first conditon or when I inlude I include [i] it gives me an error.
+```
