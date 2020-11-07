@@ -280,7 +280,7 @@ dim(df_combined)
 There are multiple ways to do this, and for this execercise, you may well combine all the raw data in a for loop and clean it up after the loop. In the next (**Optional**) excercise however, you will need to clean up the data in the loop before you can combine them. 
 
 
-```{r}
+```{r, message = FALSE}
 
 start <-  1987
 
@@ -309,6 +309,23 @@ for (year in start:end){
 
 
 
+```{r}
+
+df_combined %>% 
+  
+  select("YY", "MM", "WVHT", "WTMP") %>% 
+  
+  rename(year = YY, month = MM, wave_ht = WVHT, temp =WTMP) %>% 
+  
+  group_by(month, year) %>% 
+  
+  summarize(temperature_c_mean = mean(temp,na.rm = T), 
+            
+            wave_height_mean = mean(wave_ht, na.rm = T)) %>% 
+  
+  mutate(year_month = y(YY))
+
+```
 
 
 
