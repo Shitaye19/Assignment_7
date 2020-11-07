@@ -304,18 +304,11 @@ for (year in start:end){
   }
 }
 
-
-```
-
-
-
-```{r}
-
 df_combined %>% 
   
   select("YY", "MM", "WVHT", "WTMP") %>% 
   
-  rename(year = YY, month = MM, wave_ht = WVHT, temp =WTMP) %>% 
+  rename(year = YY, month = MM, wave_ht = WVHT, temp =WTMP) %>%  
   
   group_by(month, year) %>% 
   
@@ -323,11 +316,22 @@ df_combined %>%
             
             wave_height_mean = mean(wave_ht, na.rm = T)) %>% 
   
-  mutate(year_month = y(YY))
+  mutate(year_month = paste(year,month, sep = "_"), 
+         year_month = parse_date(year_month,"%y_%m")) %>% 
+  
+  ggplot(aes(x = year_month, y = temperature_c_mean)) +
+  
+  labs(title =  "Monthly average temperature from 1987 to 1992", hjust = 0) +
+  
+  geom_point()+
+  
+  geom_line() 
+
+
+
+
 
 ```
-
-
 
 **2.5 (Optional) Now, further generalize your loop so that it works for an year between 1987 and 2013. Here are a few things that you should pay attention to:**
 
