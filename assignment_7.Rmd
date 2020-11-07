@@ -304,7 +304,7 @@ for (year in start:end){
   }
 }
 
-df_combined %>% 
+df_combined1<-df_combined %>% 
   
   select("YY", "MM", "WVHT", "WTMP") %>% 
   
@@ -317,9 +317,11 @@ df_combined %>%
             wave_height_mean = mean(wave_ht, na.rm = T)) %>% 
   
   mutate(year_month = paste(year,month, sep = "_"), 
-         year_month = parse_date(year_month,"%y_%m")) %>% 
+         
+         year_month = parse_date(year_month,"%y_%m"))
+
   
-  ggplot(aes(x = year_month, y = temperature_c_mean)) +
+  ggplot(df_combined1, aes(x = year_month, y = temperature_c_mean)) +
   
   labs(title =  "Monthly average temperature from 1987 to 1992", hjust = 0) +
   
@@ -327,6 +329,18 @@ df_combined %>%
   
   geom_line() 
 
+
+ggplot(data =df_combined1, aes(x = year_month, y = wave_height_mean)) +
+  
+  geom_point()+
+  
+  geom_line() +
+  
+labs(title =  "Monthly wave height from 1987 to 1992", hjust = 0)+
+
+ geom_point()+
+  
+  geom_line() 
 
 
 
