@@ -410,19 +410,34 @@ Yes, it returns correct values.
 
 ```{r}
 
-f_to_c<- function(FA){
+
+f_to_c<- function(FA) {
   
   CL =(FA -32)*5/9
-
+  
+ if (CL < -20) {
+    
+     print("Don't bother going out")
+  
+   } else if(CL > 30) {
+        
+        print("I'm moving back to Canada") 
+        
+      } else {
+        
+       return(CL)
+        
+      }   
+  
 }
 
- #check<- f_to_c(c(32,50,212))
-# check
+f_to_c(c(-10,60,90))
 
 
-far_to_cel<-f_to_c(c(-10,60,90))
-
-far_to_cel
+  
+  
+    
+  
 
 
 
@@ -433,26 +448,5 @@ far_to_cel
 
 
 
-```{r}
 
-##for (i in far_to_cel)
-  
- ## if(far_to_cel[i] < -20){
-    
-    print("Don't bother going out")
-    
-  ##} else if ( far_to_cel[i] > 30) {
-    
-    print("I'm moving back to Canada")
-    
-  ##} else {
-    
-   ## return(far_to_cel[i])
-    
-    
-##  }
-
-#I tried many options but, it eithir prints three of the first conditon or when I inlude I include [i] it gives me an error.
-    
-```
 
