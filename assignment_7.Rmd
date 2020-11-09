@@ -384,6 +384,20 @@ Take your function for a spin does it return the correct values?
 
 212 F = 100 C
 
+```{r}
+F_to_C <- function(FA){
+  
+ CL =(FA -32)*5/9
+ 
+}
+  
+Far_to_Cel<-F_to_C(c(32, 50, 212))
+Far_to_Cel
+
+```
+
+Yes, it returns correct values.
+
 
 
 **3.2** A student came from 'tropical Canada'. She doesn't like the cold but she really didn't like it when it's hot. Although she wanted to know what the temperature in Celsius when the US weather channel reported it in Farenheit, there are certain points at which it was just too cold or too hot for her to care about the exact value.  **Modify the f_to_c function below to print the following**, and check if your function works properly using the input of**-10 F, 60 F, and 90 F.**
