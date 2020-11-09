@@ -413,28 +413,32 @@ Yes, it returns correct values.
 
 f_to_c<- function(FA) {
   
+  
   CL =(FA -32)*5/9
   
- if (CL < -20) {
-    
-     print("Don't bother going out")
   
-   } else if(CL > 30) {
-        
-        print("I'm moving back to Canada") 
-        
-      } else {
-        
-       return(CL)
-        
-      }   
+  if (CL < -20) {
+    
+    print("Don't bother going out")
+    
+  } else if(CL > 30) {
+    
+    print("I'm moving back to Canada") 
+    
+  } else {
+    
+    return(CL)
+    
+  }   
   
 }
 
-f_to_c(c(-10,60,90))
+f_to_c(-10)
+f_to_c(60)
+f_to_c(90)
 
 
-  
+
   
     
   
